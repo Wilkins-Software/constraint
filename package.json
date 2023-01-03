@@ -5,7 +5,8 @@
   "typings": "dist/index.d.ts",
   "private": false,
   "files": [
-    "dist"
+    "dist",
+    "ex-1.png"
   ],
   "engines": {
     "node": ">=16"
