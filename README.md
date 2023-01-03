@@ -28,7 +28,7 @@ const MyForm = () => {
 ```
 
 Which will produce the below (chrome): 
-![An example](./ex-1.png)
+![An example](https://raw.githubusercontent.com/Wilkins-Software/constraint/main/ex-1.png)
 
 ## License
 This library is licensed under the MIT License.
