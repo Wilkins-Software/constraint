@@ -10,7 +10,9 @@ export const Textarea = ({
   HTMLTextAreaElement
 > &
   ConstrainedInputProps) => {
-  const ref = useRef<HTMLTextAreaElement>(null);
+  const _ref = useRef<HTMLTextAreaElement>(null);
+  const ref = (props.ref || _ref) as React.RefObject<HTMLTextAreaElement>;
+
   const [value, setValue] = useState(props.value || '');
 
   useEffect(() => {

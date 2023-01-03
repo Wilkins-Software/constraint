@@ -14,7 +14,8 @@ export const Input = ({
   HTMLInputElement
 > &
   ConstrainedInputProps) => {
-  const ref = useRef<HTMLInputElement>(null);
+  const _ref = useRef<HTMLInputElement>(null);
+  const ref = (props.ref || _ref) as React.RefObject<HTMLInputElement>;
   const [value, setValue] = useState(props.value || '');
 
   useEffect(() => {

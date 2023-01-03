@@ -10,7 +10,9 @@ export const Select = ({
   HTMLSelectElement
 > &
   ConstrainedInputProps) => {
-  const ref = useRef<HTMLSelectElement>(null);
+  const _ref = useRef<HTMLSelectElement>(null);
+  const ref = (props.ref || _ref) as React.RefObject<HTMLSelectElement>;
+
   const [value, setValue] = useState(props.value || '');
 
   useEffect(() => {
