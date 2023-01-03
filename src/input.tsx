@@ -1,21 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 
 export type ConstrainedInputProps = {
   checker: (value: unknown) => boolean;
   errorMessage?: (value: unknown) => string;
 };
 
-export const Input = ({
-  checker,
-  errorMessage,
-  ...props
-}: React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
-> &
-  ConstrainedInputProps) => {
+export const Input = forwardRef<
+  HTMLInputElement,
+  React.DetailedHTMLProps<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  > &
+    ConstrainedInputProps
+>(function _Input({ checker, errorMessage, ...props }, passedRef) {
   const _ref = useRef<HTMLInputElement>(null);
-  const ref = (props.ref || _ref) as React.RefObject<HTMLInputElement>;
+  const ref = (passedRef || _ref) as React.RefObject<HTMLInputElement>;
   const [value, setValue] = useState(props.value || '');
 
   useEffect(() => {
@@ -38,4 +37,4 @@ export const Input = ({
       {...props}
     />
   );
-};
+});

@@ -1,17 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { ConstrainedInputProps } from './input';
 
-export const Select = ({
-  checker,
-  errorMessage,
-  ...props
-}: React.DetailedHTMLProps<
-  React.SelectHTMLAttributes<HTMLSelectElement>,
-  HTMLSelectElement
-> &
-  ConstrainedInputProps) => {
+export const Select = forwardRef<
+  HTMLSelectElement,
+  React.DetailedHTMLProps<
+    React.SelectHTMLAttributes<HTMLSelectElement>,
+    HTMLSelectElement
+  > &
+    ConstrainedInputProps
+>(function _Select({ checker, errorMessage, ...props }, passedRef) {
   const _ref = useRef<HTMLSelectElement>(null);
-  const ref = (props.ref || _ref) as React.RefObject<HTMLSelectElement>;
+  const ref = (passedRef || _ref) as React.RefObject<HTMLSelectElement>;
 
   const [value, setValue] = useState(props.value || '');
 
@@ -35,4 +34,4 @@ export const Select = ({
       {...props}
     />
   );
-};
+});

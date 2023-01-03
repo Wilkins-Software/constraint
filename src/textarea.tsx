@@ -1,17 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { ConstrainedInputProps } from './input';
 
-export const Textarea = ({
-  checker,
-  errorMessage,
-  ...props
-}: React.DetailedHTMLProps<
-  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-  HTMLTextAreaElement
-> &
-  ConstrainedInputProps) => {
+export const Textarea = forwardRef<
+  HTMLTextAreaElement,
+  React.DetailedHTMLProps<
+    React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+    HTMLTextAreaElement
+  > &
+    ConstrainedInputProps
+>(function _Textarea({ checker, errorMessage, ...props }, passedRef) {
   const _ref = useRef<HTMLTextAreaElement>(null);
-  const ref = (props.ref || _ref) as React.RefObject<HTMLTextAreaElement>;
+  const ref = (passedRef || _ref) as React.RefObject<HTMLTextAreaElement>;
 
   const [value, setValue] = useState(props.value || '');
 
@@ -35,4 +34,4 @@ export const Textarea = ({
       {...props}
     />
   );
-};
+});
