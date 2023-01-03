@@ -27,6 +27,8 @@ const MyForm = () => {
 
 ```
 
+Which will produce the below (chrome): 
+![An example](./ex-1.png)
 
 ## License
 This library is licensed under the MIT License.
