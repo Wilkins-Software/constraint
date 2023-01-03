@@ -85,5 +85,8 @@
       "<rootDir>/src"
     ],
     "testEnvironment": "jest-environment-jsdom-sixteen"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
