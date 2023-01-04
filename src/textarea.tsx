@@ -12,7 +12,7 @@ export const Textarea = forwardRef<
   const _ref = useRef<HTMLTextAreaElement>(null);
   const ref = (passedRef || _ref) as React.RefObject<HTMLTextAreaElement>;
 
-  const [value, setValue] = useState(props.value || '');
+  const [value, setValue] = useState(props.value || props.defaultValue || '');
 
   useEffect(() => {
     if (!ref.current) return;

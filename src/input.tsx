@@ -15,7 +15,7 @@ export const Input = forwardRef<
 >(function _Input({ checker, errorMessage, ...props }, passedRef) {
   const _ref = useRef<HTMLInputElement>(null);
   const ref = (passedRef || _ref) as React.RefObject<HTMLInputElement>;
-  const [value, setValue] = useState(props.value || '');
+  const [value, setValue] = useState(props.value || props.defaultValue || '');
 
   useEffect(() => {
     if (!ref.current) return;

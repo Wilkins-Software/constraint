@@ -12,7 +12,7 @@ export const Select = forwardRef<
   const _ref = useRef<HTMLSelectElement>(null);
   const ref = (passedRef || _ref) as React.RefObject<HTMLSelectElement>;
 
-  const [value, setValue] = useState(props.value || '');
+  const [value, setValue] = useState(props.value || props.defaultValue || '');
 
   useEffect(() => {
     if (!ref.current) return;
