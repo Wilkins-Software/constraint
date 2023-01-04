@@ -12,7 +12,7 @@ export const Input = forwardRef<
     HTMLInputElement
   > &
     ConstrainedInputProps
->(function _Input({ checker, errorMessage, ...props }, passedRef) {
+>(function _Input({ checker, errorMessage, onChange, ...props }, passedRef) {
   const _ref = useRef<HTMLInputElement>(null);
   const ref = (passedRef || _ref) as React.RefObject<HTMLInputElement>;
   const [value, setValue] = useState(props.value || props.defaultValue || '');
@@ -32,6 +32,7 @@ export const Input = forwardRef<
       onChange={e => {
         ref.current?.setCustomValidity('');
         setValue(e.target.value);
+        onChange?.(e);
       }}
       ref={ref}
       {...props}

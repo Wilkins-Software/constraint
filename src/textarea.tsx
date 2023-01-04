@@ -8,7 +8,7 @@ export const Textarea = forwardRef<
     HTMLTextAreaElement
   > &
     ConstrainedInputProps
->(function _Textarea({ checker, errorMessage, ...props }, passedRef) {
+>(function _Textarea({ checker, errorMessage, onChange, ...props }, passedRef) {
   const _ref = useRef<HTMLTextAreaElement>(null);
   const ref = (passedRef || _ref) as React.RefObject<HTMLTextAreaElement>;
 
@@ -29,6 +29,7 @@ export const Textarea = forwardRef<
       onChange={e => {
         ref.current?.setCustomValidity('');
         setValue(e.target.value);
+        onChange?.(e);
       }}
       ref={ref}
       {...props}

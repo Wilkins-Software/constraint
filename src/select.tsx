@@ -8,7 +8,7 @@ export const Select = forwardRef<
     HTMLSelectElement
   > &
     ConstrainedInputProps
->(function _Select({ checker, errorMessage, ...props }, passedRef) {
+>(function _Select({ checker, errorMessage, onChange, ...props }, passedRef) {
   const _ref = useRef<HTMLSelectElement>(null);
   const ref = (passedRef || _ref) as React.RefObject<HTMLSelectElement>;
 
@@ -29,6 +29,7 @@ export const Select = forwardRef<
       onChange={e => {
         ref.current?.setCustomValidity('');
         setValue(e.target.value);
+        onChange?.(e);
       }}
       ref={ref}
       {...props}
